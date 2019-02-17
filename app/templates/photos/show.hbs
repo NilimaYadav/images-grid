@@ -1,0 +1,56 @@
+
+	<div class="col-xs-8 col-xs-offset-2 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3">
+      <h2>image preview</h2>
+<p><img src="{{photo.url}}"></p>
+   <button type="button" class="btn btn-primary">
+<a href="" download={{photo.url}}>Download</a>
+
+   </button>
+  
+	
+	<button class="btn btn-primary btncustom">{{#link-to 'photos'}}<a href=""  class="homebtn">Home</a>{{/link-to}}
+	</button>
+
+<button type="button" class="btn btn-default btn-sm " id="cust">
+          <span class="glyphicon glyphicon-thumbs-up">Like </span> 
+</button>
+ 	   
+		  <form  method="get">
+
+        <input type="text" name="lname" id="lname" class="form-control" placeholder="leave your comment">
+        <input type="button"  class="btn btn-primary" value="comment" onClick="comment()"><br>
+        
+        Your Commnent: <span id="result"></span>
+        
+    	</form>
+  
+    </div>
+{{outlet}}
+
+<script>
+
+
+$(document).ready(function() {
+  $('#cust').on('click', function() {
+    change();
+  });
+});
+
+function change() {
+  var $el = $('#cust');
+  var $el2 = $('#cust span:last-child');
+  textNode = $("#cust span:last-child").text();
+  $el.find('span.glyphicon').toggleClass(' glyphicon-thumbs-up  glyphicon-thumbs-down');
+  textNode = ($el.hasClass('showLogin') ? 'Like' : 'Dislike');
+  $el2.text(textNode);
+  $el.toggleClass('showLogin');
+}
+
+</script>
+  <script>
+      function comment() {
+        document.getElementById("result").innerHTML = 
+document.getElementById('lname').value;
+      }
+   </script>
+

@@ -1,0 +1,22 @@
+{{#each photos as |photo|}}
+<div class="col-sm-2">
+	<div class="panel panel-default photo-item">
+		<div class="panel-heading">
+	<h3 class="panel-title">{{photo.title}}</h3>
+</div>
+<div class="panel-body">
+	<p><button><img src="{{photo.thumbnailUrl}}"{{action 'move' photo}}></button></p>
+</div>
+</div>
+</div>
+{{/each}} 
+{{outlet}}
+
+
+
+
+			
+		
+		
+			
+		
