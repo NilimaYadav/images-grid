@@ -4,7 +4,7 @@ const{ Route,set}=Ember;
 export default Route.extend({
 	model(params){
 		return this.store.findRecord('photo',params.id);
-		 // return this.store.find('comment');
+		return this.store.findAll('comment');
 	},
 	
 	
@@ -14,18 +14,19 @@ export default Route.extend({
 	
 
 	actions:{
-    	addComment(comment){
-    		this.get('store').createRecord('comment', {
-    			id: Math.floor(Date.now() / 1000),
-    			description: comment
-    		})
-    		this.controller.set('comment', null);
-    	},
-    	// like(show){
-    	// 	this.get('show').toggle('<i class="glyphicon glyphicon-thumbs-down"></i>')
-    	// }
-    	// like(){
-    	// 	this.get('likebutton').toggle.color="blue";
-    	// }
-    }
+        addComment(comment){
+            this.get('store').createRecord('comment', {
+                id: Math.floor(Date.now() / 1000),
+                description: comment
+            })
+            this.controller.set('comment', null);
+            comment.save()
+
+        },
+        readComment(comment){
+            let id=this.get('commentId')
+            this.store.findRecord('comment',1)
+        }
+       
+            }
 });

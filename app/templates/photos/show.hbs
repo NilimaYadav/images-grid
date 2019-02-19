@@ -15,7 +15,7 @@
           <span class="glyphicon glyphicon-thumbs-up">Like </span> 
 </button>
  	   
-		  <form  method="get">
+		 {{!--  <form  method="get">
 
         <input type="text" name="lname" id="lname" class="form-control" placeholder="leave your comment">
         <input type="button"  class="btn btn-primary" value="comment" onClick="comment()"><br>
@@ -23,34 +23,40 @@
         Your Commnent: <span id="result"></span>
         
     	</form>
-  
+   --}}
+   {{input type="text" placeholder="Comment" value= comment}}
+ 	<button {{action 'addComment' comment  'readComment' comment}}> 
+	 	Comment
+	</button> 
+	Your comment:{{readComment}}
+	
     </div>
 {{outlet}}
 
-<script>
+// <script>
 
 
-$(document).ready(function() {
-  $('#cust').on('click', function() {
-    change();
-  });
-});
+// $(document).ready(function() {
+//   $('#cust').on('click', function() {
+//     change();
+//   });
+// });
 
-function change() {
-  var $el = $('#cust');
-  var $el2 = $('#cust span:last-child');
-  textNode = $("#cust span:last-child").text();
-  $el.find('span.glyphicon').toggleClass(' glyphicon-thumbs-up  glyphicon-thumbs-down');
-  textNode = ($el.hasClass('showLogin') ? 'Like' : 'Dislike');
-  $el2.text(textNode);
-  $el.toggleClass('showLogin');
-}
+// function change() {
+//   var $el = $('#cust');
+//   var $el2 = $('#cust span:last-child');
+//   textNode = $("#cust span:last-child").text();
+//   $el.find('span.glyphicon').toggleClass(' glyphicon-thumbs-up  glyphicon-thumbs-down');
+//   textNode = ($el.hasClass('showLogin') ? 'Like' : 'Dislike');
+//   $el2.text(textNode);
+//   $el.toggleClass('showLogin');
+// }
 
-</script>
-  <script>
-      function comment() {
-        document.getElementById("result").innerHTML = 
-document.getElementById('lname').value;
-      }
-   </script>
+// </script>
+//   <script>
+//       function comment() {
+//         document.getElementById("result").innerHTML = 
+// document.getElementById('lname').value;
+//       }
+//    </script>
 
